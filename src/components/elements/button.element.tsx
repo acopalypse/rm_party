@@ -1,6 +1,7 @@
-import { useApolloClient, gql } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
 import styled from 'styled-components';
 import { IButton } from '../../interfaces/button.interface';
+import { BLOCK_CHARACTER } from '../../other/blockCharacterById';
 
 const StyledButton = styled.button`
   position: absolute;
@@ -20,11 +21,7 @@ export const Button: React.FC<IButton> = ({ id }) => {
   const blockHandler = (e: React.MouseEvent<HTMLElement>) => {
     client.writeFragment({
       id: `Character:${id}`,
-      fragment: gql`
-        fragment MyChar on Character {
-          block
-        }
-      `,
+      fragment: BLOCK_CHARACTER,
       data: {
         block: true,
       },
