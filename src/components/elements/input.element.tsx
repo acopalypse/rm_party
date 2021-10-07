@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IInput } from '../../interfaces/input.interface';
 
 const StyledInput = styled.input`
   height: 80px;
@@ -17,11 +18,7 @@ const StyledInput = styled.input`
   padding: 0 20px;
 `;
 
-interface InputProps {
-  setInput(value: string): void;
-}
-
-export const Input: React.FC<InputProps> = ({ setInput }) => {
+export const Input: React.FC<IInput> = ({ setInput }) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     value.length > 2 && setInput(e.target.value);
