@@ -1,5 +1,5 @@
 import { useLazyQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Flex } from './components/markup/flex.markup';
 import { Wrapper } from './components/markup/wrapper.markup';
 import { GET_CHARACTERS } from './other/getChatactersByName';
@@ -19,11 +19,11 @@ export const App: React.FC = () => {
     input.length > 2 && loadCharacters();
   }, [input, loadCharacters]);
 
+  const MemoInput = useMemo(() => <Input setInput={setInput} />, [setInput]);
+
   return (
     <Wrapper>
-      <Flex>
-        <Input setInput={setInput} />
-      </Flex>
+      <Flex>{MemoInput}</Flex>
       {data && <OutputArea data={data} setParty={setParty} />}
     </Wrapper>
   );
