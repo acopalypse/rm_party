@@ -1,6 +1,9 @@
 import { useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
+import { Flex } from './components/markup/flex.markup';
+import { Wrapper } from './components/markup/wrapper.markup';
 import { GET_CHARACTERS } from './other/getChatactersByName';
+import { Input } from './components/elements/input.element';
 
 export const App: React.FC = () => {
   const [input, setInput] = useState<string>('');
@@ -10,5 +13,11 @@ export const App: React.FC = () => {
       name: input,
     },
   });
-  return <div></div>;
+  return (
+    <Wrapper>
+      <Flex>
+        <Input setInput={setInput} />
+      </Flex>
+    </Wrapper>
+  );
 };
