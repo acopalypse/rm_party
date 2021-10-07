@@ -7,6 +7,7 @@ export const GET_CHARACTERS = gql`
         id
         name
         image
+        block @client
       }
     }
   }
