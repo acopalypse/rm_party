@@ -23,12 +23,13 @@ export const App: React.FC = () => {
   }, [input, loadCharacters]);
 
   const MemoInput = useMemo(() => <Input setInput={setInput} />, [setInput]);
+  const MemoPartyArea = useMemo(() => <PartyArea party={party} />, [party]);
 
   return (
     <Wrapper>
       <Flex>{MemoInput}</Flex>
       {data && <OutputArea data={data} setParty={setParty} />}
-      <PartyArea party={party} />
+      {MemoPartyArea}
     </Wrapper>
   );
 };
